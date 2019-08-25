@@ -26,22 +26,22 @@ void vars( byte dir, float dist, long del, float ratio, byte master,byte slave){
 }
 
 void acceleration(byte dir, float dist, long del,int N){
-   float total_dis = N*(N+1)/2 * 3 * start_dis; // check commanded distance and number of steps
-   if(total_dis > dist){
-        float m = sqrt((dist/start_dis) * 2/3); // correct if necessary
+   float total_dist = N*(N+1)/2 * 3 * start_dist; // check commanded distance and number of steps
+   if(total_dist > dist){
+        float m = sqrt((dist/start_dist) * 2/3); // correct if necessary
         N = m;
         }
    
-   float mid_dis = dist-start_dis*3*N*(N+1)/2;
+   float mid_dist = dist-start_dist*3*N*(N+1)/2;
    
   for(int i =1; i<=N;i++){
-    vars(dir, start_dis * i, del/i, straight, rightmotors, leftmotors);
+    vars(dir, start_dist * i, del/i, straight, rightmotion, leftmotion);
         }
    
-   vars(dir, mid_dis, del/N, straight, rightmotors, leftmotors);
+   vars(dir, mid_dist, del/N, straight, rightmotion, leftmotion);
    
   for(int i=N; i>0; i--){
-   vars(dir, start_dis *2*i, del/i, straight, rightmotors, leftmotors);
+   vars(dir, start_dist *2*i, del/i, straight, rightmotion, leftmotion);
         }
 }
 

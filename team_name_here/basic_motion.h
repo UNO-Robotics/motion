@@ -5,7 +5,7 @@ void mov(byte dir, float dist, long del) {
 
    for(long i = 0; i < steps; i++){
     delayMicroseconds(del);
-    PORTL ^= motion
+    PORTL ^= allmotion;
    }
 }
 
@@ -16,6 +16,6 @@ void turn(byte dir, float dist, long del) {
 
   for(long i = 0; i < steps; i++){
     delayMicroseconds(del);
-    PORTL ^= motion
+    PORTL ^= allmotion;
   }
 }
