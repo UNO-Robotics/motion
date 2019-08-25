@@ -1,24 +1,49 @@
-void varsInt(byte dir, float dist, long del, float ratio, byte master, byte slave) {
-  ctc3_setup();
-  ctc4_setup();
+void vars( byte dir, float dist, long del, float ratio, byte master,byte slave){
   PORTL = dir;
-  float stepf = dist*steps_per_inch;
-  masterWheels = master;
-  slaveWheels = slave;
+  float stepf=dist*steps_per_inch;
+  long steps=stepf;
 
-  noInterrupts();
-  //OCR4A = 16 * del - 1;//setup speed for master
-  OCR4A = 16 * del;
-  TCNT4 = 0;//reset
-  float temp = del * ratio;
-  long slaveDelay = temp;
-  //OCR3A = slaveDelay * 16 - 1;//setup speed for slave 
-  OCR3A = slaveDelay * 16;
-  TCNT3 = 0;//reset
-  steps = stepf;
-  steps_counter = 0;  //reset step counter
-  interrupts();
-} 
+ long masterCount =0;
+ long slaveCount =0;
+ long stepCount =0;
+
+ float temp = del * ratio;
+ long slaveDelay =  temp;
+
+ while(stepCount < steps){
+    if(masterCount > del){
+        PORTL ^= master;//Step masterwheels
+        masterCount = 0;
+        stepCount++;
+    }
+    if(slaveCount > slaveDelay){
+      PORTL ^= slave;//step slave wheels
+      slaveCount = 0;//rest
+    }
+    masterCount++;
+    slaveCount++;
+ }
+}
+
+void acceleration(byte dir, float dist, long del,int N){
+   float total_dis = N*(N+1)/2 * 3 * start_dis; // check commanded distance and number of steps
+   if(total_dis > dist){
+        float m = sqrt((dist/start_dis) * 2/3); // correct if necessary
+        N = m;
+        }
+   
+   float mid_dis = dist-start_dis*3*N*(N+1)/2;
+   
+  for(int i =1; i<=N;i++){
+    vars(dir, start_dis * i, del/i, straight, rightmotors, leftmotors);
+        }
+   
+   vars(dir, mid_dis, del/N, straight, rightmotors, leftmotors);
+   
+  for(int i=N; i>0; i--){
+   vars(dir, start_dis *2*i, del/i, straight, rightmotors, leftmotors);
+        }
+}
 
 void ctc4_setup() {
   noInterrupts();
@@ -64,32 +89,27 @@ ISR(TIMER4_COMPA_vect) { // timer compare ISR
   steps--;
 }
 
-void vars( byte dir, float dist, long del, float ratio, byte master,byte slave){
+void varsInt(byte dir, float dist, long del, float ratio, byte master, byte slave) {
+  ctc3_setup();
+  ctc4_setup();
   PORTL = dir;
-  float stepf=dist*steps_per_inch;
-  long steps=stepf;
+  float stepf = dist*steps_per_inch;
+  masterWheels = master;
+  slaveWheels = slave;
 
- long masterCount =0;
- long slaveCount =0;
- long stepCount =0;
-
- float temp = del * ratio;
- long slaveDelay =  temp;
-
- while(stepCount < steps){
-    if(masterCount > del){
-        PORTL ^= master;//Step masterwheels
-        masterCount = 0;
-        stepCount++;
-    }
-    if(slaveCount > slaveDelay){
-      PORTL ^= slave;//step slave wheels
-      slaveCount = 0;//rest
-    }
-    masterCount++;
-    slaveCount++;
- }
-}
+  noInterrupts();
+  //OCR4A = 16 * del - 1;//setup speed for master
+  OCR4A = 16 * del;
+  TCNT4 = 0;//reset
+  float temp = del * ratio;
+  long slaveDelay = temp;
+  //OCR3A = slaveDelay * 16 - 1;//setup speed for slave 
+  OCR3A = slaveDelay * 16;
+  TCNT3 = 0;//reset
+  steps = stepf;
+  steps_counter = 0;  //reset step counter
+  interrupts();
+} 
 
 void varsIntTurn(byte dir, float dist, long del, float ratio, byte master, byte slave) {
   ctc3_setup();
@@ -112,24 +132,4 @@ void varsIntTurn(byte dir, float dist, long del, float ratio, byte master, byte 
   steps_counter = 0;  //reset step counter
   interrupts();
 
-}
-
-void acceleration(byte dir, float dist, long del,int N){
-   float total_dis = N*(N+1)/2 * 3 * start_dis; // check commanded distance and number of steps
-   if(total_dis > dist){
-        float m = sqrt((dist/start_dis) * 2/3); // correct if necessary
-        N = m;
-        }
-   
-   float mid_dis = dist-start_dis*3*N*(N+1)/2;
-   
-  for(int i =1; i<=N;i++){
-    vars(dir, start_dis * i, del/i, straight, rightmotors, leftmotors);
-        }
-   
-   vars(dir, mid_dis, del/N, straight, rightmotors, leftmotors);
-   
-  for(int i=N; i>0; i--){
-   vars(dir, start_dis *2*i, del/i, straight, rightmotors, leftmotors);
-        }
 }
