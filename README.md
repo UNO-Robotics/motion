@@ -9,7 +9,14 @@ you have gone through the **ALL** of the motion workshops at least once. Althoug
 
 ### What kind of robot is this library for?
 
-This library was designed for robots using an Arduino board, four stepper motors and four Mecanum wheels.
+This library was designed for robots using an Arduino Mega, a UNO Robotics Stepper Motor Driver Board, Stepper Motors, and Mecanum Wheels.
+Working examples of UNO Robotics Stepper Motor Driver Boards can be found here:
+
+[Arduino Mega Shield](https://cadlab.io/project/2003/master/files).
+
+[Purple Board](https://github.com/Andrew-Stark/ratFink-Source).
+
+MR. W Board: Coming Soon
 
 ### Using the motion library
 
