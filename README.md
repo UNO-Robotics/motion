@@ -16,8 +16,6 @@ Working examples of UNO Robotics Stepper Motor Driver Boards can be found here:
 
 [Purple Board](https://github.com/Andrew-Stark/ratFink-Source).
 
-MR. W Board: Coming Soon
-
 ### Using the motion library
 
 Clone or download this repository and rename the *team_name_here* directory and *team_name_here.ino* file to whatever you desire.
@@ -27,3 +25,7 @@ You will also need the [Arduino IDE](https://www.arduino.cc/en/Main/Software)
 Most of the variables in *constants.h* are unassigned. Their values will be largely dependent on the build of your robot. In order to find these values, you will need to go through some of the workshops provided. 
 
 Once you've filled in all of the variables in *constants.h* your robot will be ready to do your bidding.
+
+### Previous examples
+
+This library has been used by UNO Robotics for many years. Here are some complete code examples from past year's competitions:
