@@ -26,12 +26,29 @@ Most of the variables in *constants.h* are unassigned. Their values will be larg
 
 Once you've filled in all of the variables in *constants.h* your robot will be ready to do your bidding.
 
-### Previous examples
+### Previous code examples
 
 This library has been used by UNO Robotics for many years. Here we compile code from previous years' competitions.
 
-[Yamaraz](https://github.com/nrayamajhee/Yamaraz).
-
-2019:
+Lafayette, LA 2019: [Competition Rules](http://sites.ieee.org/r5annualmtg2018/files/2018/09/2019-Robotics-Competition-Rules.pdf)
 
 [TheUglyDuckling](https://github.com/RishavRajendra/TheUglyDuckling).
+
+Austin, TX 2018: 
+
+[Yamaraz](https://github.com/nrayamajhee/Yamaraz).
+
+### Media
+
+Lafayette, LA 2019:
+
+Video: [UNO Robot wins 2nd place in Round 3](https://www.youtube.com/watch?v=IMj3g3HFpEc)
+
+Austin, TX 2018:
+
+Video: [UNO Robot wins 1st place in Round 3](https://www.youtube.com/watch?v=BYYOhwhvQP8)
+
+[Campus News Article](http://new.uno.edu/news/2018-04-17/university-of-new-orleans).
+
+
+
