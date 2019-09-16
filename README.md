@@ -29,3 +29,7 @@ Once you've filled in all of the variables in *constants.h* your robot will be r
 ### Previous examples
 
 This library has been used by UNO Robotics for many years. Here are some complete code examples from past year's competitions:
+
+[Yamaraz](https://github.com/nrayamajhee/Yamaraz).
+
+[TheUglyDuckling](https://github.com/RishavRajendra/TheUglyDuckling).
