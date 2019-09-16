@@ -28,9 +28,10 @@ Once you've filled in all of the variables in *constants.h* your robot will be r
 
 ### Previous examples
 
-This library has been used by UNO Robotics for many years. Here we compile code from previous years' competitions:
+This library has been used by UNO Robotics for many years. Here we compile code from previous years' competitions.
 
 [Yamaraz](https://github.com/nrayamajhee/Yamaraz).
 
 2019:
+
 [TheUglyDuckling](https://github.com/RishavRajendra/TheUglyDuckling).
