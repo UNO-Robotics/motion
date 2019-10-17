@@ -32,7 +32,9 @@ This library has been used by UNO Robotics for many years. Here we compile code 
 
 Lafayette, LA 2019: [Competition Rules](http://sites.ieee.org/r5annualmtg2018/files/2018/09/2019-Robotics-Competition-Rules.pdf)
 
-[TheUglyDuckling](https://github.com/RishavRajendra/TheUglyDuckling).
+[AGC](https://github.com/mceraso/agc), 2nd place overall, arduino state machine.
+
+[TheUglyDuckling](https://github.com/RishavRajendra/TheUglyDuckling), advanced machine learning for image processing.
 
 Austin, TX 2018: 
 
